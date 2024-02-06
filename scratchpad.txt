@@ -1,0 +1,88 @@
+::: MAVEN REVIEW :::
+
+mvn
+  Clean - remove temporary directories and files
+    Pre-cleand and post clean goal (they are hooks)
+    escentially gets rid of the target directory
+
+  default- where most of the useful goals live - building and testing 
+    compile - compile code into byte code
+
+    test- runs unit test
+
+    package - creates jar or war files
+
+    verify - runs checks and intergration test
+
+  site - where documentation is generated - reports and java docs
+
+
+ mvn work flow:
+    
+    - write feature then write test. 
+
+    - writing maven compile - to get feed back for errors
+
+    - maven clean test - for more feed back 
+
+    - run app like its run in production mvn clean package or verify 
+        -> cd target -> java -jar and pass the file 
+
+    
+App interms of layers:
+
+Persistence (bottom) 
+  -handle interactions with DB - think entities( java objects) -> maps to table
+  -patterns for enties- repos or DAO's ( CRUD )
+  -expose it through interfaces.
+
+Service layer 
+  -use all functionality exposed by persistance layer and use it to meet the requiremnts 
+  -dose it through interfaces 
+  -call must always go through service layers. 
+
+
+Presentation (top)
+  - all the data of usuing services in service layers and expose to user.
+  - if we chose to move to a diffwerent tyoe of API we would not need to change the service layers 
+
+
+::: Inversion of Control :::
+
+if our class depends on 3 other classes to complet its goal.
+
+dependency injection framwork- pre canned solution. 
+
+* coding to interfaces instead of concreat classes is the way to do things! *
+* We should leave it up to the frame work to supply the concrete classes wherever we declare our interfaces vid Dependency Injection.
+
+Beans = concrete classes
+
+@Configuration // tells spring to look for beans //
+
+spring usses constuctor to see what dependecies are needed and the inject them 
+
+@service is the same as @Component but just a bit more descriptive as to what the class atually does.
+  - if we want to label the particular class as a service as a bean and be able to inject it and have dependicies injected into a class
+
+Component scanning - happens whe project starts. it looks for beans and where beans are needed.
+    -
+
+
+:: DB's ::::
+
+Layers:
+     Database Driver (bottom)
+      -db will make a driver for you
+
+    JDBC
+      -low level api- interact w db with SQL queryies- better optimization- you have to map- more work
+      Spring JDBC - template - makes interation with DB easier
+      -how to connect
+
+    JPA
+      intereact with Db using objects 
+      high level API
+      -how to query using objects. 
+
+
