@@ -19,7 +19,7 @@ mvn
 
  mvn work flow:
     
-    - write feature then write test. 
+    - write feature then write test. (I think other way around)
 
     - writing maven compile - to get feed back for errors
 
